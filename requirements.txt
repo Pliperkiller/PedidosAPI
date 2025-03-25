@@ -1,0 +1,23 @@
+flask
+pydantic
+dependency-injector
+
+# Base de datos (según la opción seleccionada)
+
+
+
+sqlalchemy
+alembic
+
+# Mensajería (según la opción seleccionada)
+
+
+
+# Testing (según la opción seleccionada)
+
+
+# Utilidades
+flask-cors
+gunicorn
+loguru
+python-dotenv
