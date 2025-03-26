@@ -1,5 +1,5 @@
 from typing import List, Optional
-from ...domain.ports.IPedidoRepository import IPedidoRepository
+from ...domain.ports.RepositorioPedido import IPedidoRepository
 from ...domain.entities.Pedido import Pedido
 
 class SqlPedidoRepository(IPedidoRepository):

@@ -1,9 +1,9 @@
 from enum import Enum
 
 class EstadoPedido(Enum):
-    CREADO = "Creado"
-    EN_PREPARACION = "En preparación"
-    LISTO_PARA_ENVIAR = "Listo para enviar"
-    EN_RUTA = "En ruta"
-    ENTREGADO = "Entregado"
-    CANCELADO = "Cancelado"
+    CREADO = "Creado" #Cliente crea el pedido
+    RECIBIDO = "Recibido" #El microservicio recibe la solicitud
+    EN_CONSULTA = "En consulta" #consulta al inventario
+    CONFIRMADO = "Confirmado" #Se confirma el inventario
+    EN_PREPARACION = "En preparación" #Se notifica al cliente y se inicia preparacion
+    COMPLETADO = "Completado" # Pedido preparado
