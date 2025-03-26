@@ -1,25 +1,15 @@
+from dataclasses import dataclass
 
+@dataclass(frozen=True)
 class Direccion:
-    def __init__(self,
-                 alias: str,
-                 pais: str,
-                 ciudad: str,
-                 estado: str,
-                 calle: str,
-                 calle2: str = None,
-                 codigo_postal: str = None,
-                 coordenadas: str = None
-                 ):
-        
-        self.alias = alias
-        self.pais = pais
-        self.ciudad = ciudad
-        self.estado = estado
-        self.calle = calle
-        self.calle2 = calle2
-        self.codigo_postal = codigo_postal
-        self.coordenadas = coordenadas
-
+    alias: str
+    pais: str
+    ciudad: str
+    estado: str
+    calle: str
+    calle2: str = None
+    codigo_postal: str = None
+    coordenadas: str = None
     
 
     def __str__(self):

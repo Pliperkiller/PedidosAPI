@@ -1,14 +1,9 @@
-import decimal
+from decimal import Decimal
+from dataclasses import dataclass
 
+@dataclass(frozen=True)
 class TotalPedido:
-    def __init__(self, subtotal: decimal, impuestos: decimal = None, descuentos: decimal = None):
-        self.subtotal = subtotal
-        self.impuestos = impuestos
-        self.descuentos = descuentos
-        self.total = self.calcular_total()
+    valor: Decimal
 
-    def calcular_total(self):
-        return self.subtotal + self.impuestos - self.descuentos
-    
     def __str__(self):
-        return f'Total Pedido: {self.subtotal} {self.impuestos} {self.descuentos} {self.total}'
+        return f'Total Pedido: {self.valor}'
