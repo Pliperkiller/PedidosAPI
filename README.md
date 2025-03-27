@@ -1,7 +1,9 @@
 # PedidosAPI
 
 ## Descripción
-PedidosAPI es un microservicio diseñado para gestionar pedidos como parte de un taller de diseño dirigido por dominios (DDD). Este proyecto sigue una arquitectura basada en capas (Domain, Application, Infrastructure) y utiliza principios de DDD para modelar entidades, objetos de valor y servicios.
+PedidosAPI es un microservicio diseñado para gestionar el ciclo de vida de los pedidos en una cadena de restaurantes.
+
+Este proyecto sigue una arquitectura basada en capas (Domain, Application, Infrastructure) y utiliza principios de DDD para modelar entidades, objetos de valor y servicios.
 
 ## Autor
 **pliperkiller**
