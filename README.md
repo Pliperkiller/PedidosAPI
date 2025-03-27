@@ -57,10 +57,14 @@ PedidosAPI/
    ```
 
 4. **Configurar variables de entorno**:
-   - Copia el archivo `.env.example` a 
-
-.env
-
+   - Copia el archivo `.env.example` a .env
+   ```sh
+   #Archivo .env.example
+   DATABASE_URI=postgresql://user:password@localhost:5432/nombre_base_datos
+   SECRET_KEY=tu_clave_secreta
+   DEBUG=True
+   FLASK_ENV=development
+   ```
 .
    - Actualiza las variables necesarias, como 
 
@@ -71,9 +75,7 @@ DATABASE_URI
 5. **Configurar la base de datos**:
    - Asegúrate de que PostgreSQL esté instalado y en ejecución.
    - Crea una base de datos para el proyecto.
-   - Actualiza la URI de la base de datos en el archivo 
-
-.env
+   - Actualiza la URI de la base de datos en el archivo .env
 
 .
 
@@ -120,6 +122,3 @@ Si deseas contribuir al proyecto:
 1. Haz un fork del repositorio.
 2. Crea una rama para tu funcionalidad (`git checkout -b feature/nueva-funcionalidad`).
 3. Realiza un pull request.
-
-## Licencia
-Este proyecto está bajo la licencia MIT. Consulta el archivo `LICENSE` para más detalles.
