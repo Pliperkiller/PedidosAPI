@@ -8,6 +8,10 @@ class RepositorioPedido(ABC):
         pass
 
     @abstractmethod
+    def modificar(self, pedido_id: str) -> Pedido:
+        pass
+
+    @abstractmethod
     def buscar_por_id(self, pedido_id: str) -> Optional[Pedido]:
         pass
 

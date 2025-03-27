@@ -6,6 +6,3 @@ class Producto:
         self.id: str = str(uuid.uuid4())
         self.nombre: str = nombre
         self.precio: Decimal = precio
-
-    def __str__(self):
-        return f'Producto: {self.id} {self.nombre} {self.precio} {self.stock}'

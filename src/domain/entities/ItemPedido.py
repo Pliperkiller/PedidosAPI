@@ -1,6 +1,5 @@
 from Producto import Producto
 from value_objects.Descuento import Descuento
-from decimal import Decimal
 
 import uuid
 

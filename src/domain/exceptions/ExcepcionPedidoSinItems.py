@@ -1,0 +1,3 @@
+
+class ExcepcionPedidoSinItems(Exception):
+    pass
