@@ -1,20 +1,16 @@
 from abc import ABC, abstractmethod
 from domain.entities.Pedido import Pedido
-from domain.entities.ItemPedido import ItemPedido
+from domain.value_objects.EstadoPedido import EstadoPedido
 
-class IPedidoService(ABC):
-
+class IServicioPedido(ABC):
     @abstractmethod
-    def agregar_item(self, pedido: Pedido, item: ItemPedido):
-        """ Agrega un ítem a un pedido. """
+    def calcular_total(self, pedido: Pedido) -> float:
         pass
 
     @abstractmethod
-    def eliminar_item(self, pedido: Pedido, item_id: str):
-        """ Elimina un ítem de un pedido. """
+    def actualizar_estado(self, pedido: Pedido, nuevo_estado: EstadoPedido) -> None:
         pass
 
     @abstractmethod
-    def recalcular_total(self, pedido: Pedido):
-        """ Recalcula el total del pedido. """
+    def validar_pedido(self, pedido: Pedido) -> bool:
         pass
