@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List, Optional
-from ..entities.Cliente import Cliente
+from domain.entities.Cliente import Cliente
 
 class RepositorioCliente(ABC):
     @abstractmethod

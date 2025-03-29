@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Optional
+from typing import Optional
 from domain.entities.Producto import Producto
 
 class RepositorioProducto(ABC):
@@ -13,10 +13,6 @@ class RepositorioProducto(ABC):
 
     @abstractmethod
     def buscar_por_id(self, producto_id: str) -> Optional[Producto]:
-        pass
-
-    @abstractmethod
-    def listar(self) -> List[Producto]:
         pass
 
     @abstractmethod
