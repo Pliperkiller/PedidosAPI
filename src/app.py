@@ -1,21 +1,30 @@
+# app.py
 from flask import Flask
-from infrastructure.config.database import db
-from infrastructure.adapters.api import pedido_blueprint
+from infrastructure.adapters.web.routes import create_pedido_blueprint
+from infrastructure.adapters.persistence import SQLAlchemyPedidoRepository
+from application.usecases import (
+    CrearPedidoUseCase,
+    ObtenerPedidoUseCase,
+    ActualizarEstadoUseCase
+)
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:password@localhost:5432/tu_base_de_datos'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     
-    db.init_app(app)
+    # Configurar repositorios
+    pedido_repo = SQLAlchemyPedidoRepository()
     
-    with app.app_context():
-        db.create_all()
+    # Inicializar casos de uso
+    crear_pedido_uc = CrearPedidoUseCase(pedido_repo)
+    obtener_pedido_uc = ObtenerPedidoUseCase(pedido_repo)
+    actualizar_estado_uc = ActualizarEstadoUseCase(pedido_repo)
     
-    app.register_blueprint(pedido_blueprint)
+    # Registrar blueprint
+    pedido_bp = create_pedido_blueprint(
+        crear_pedido_uc,
+        obtener_pedido_uc,
+        actualizar_estado_uc
+    )
+    app.register_blueprint(pedido_bp)
     
     return app
-
-if __name__ == '__main__':
-    app = create_app()
-    app.run(debug=True)

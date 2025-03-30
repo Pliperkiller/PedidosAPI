@@ -1,7 +1,7 @@
 # infrastructure/web/config/flask_config.py
 from flask import Flask
-from infrastructure.web.routes import crear_pedido_blueprint
-from infrastructure.web.middleware import error_handler
+from infrastructure.adapters.web.routes import crear_pedido_blueprint
+from infrastructure.adapters.web.middleware import error_handler
 
 def crear_app():
     app = Flask(__name__)

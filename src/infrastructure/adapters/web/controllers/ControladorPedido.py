@@ -33,7 +33,7 @@ class PedidoController:
         except Exception as e:
             return jsonify({"error": "Error interno del servidor"}), 500
 
-def register_routes(blueprint: Blueprint, crear_pedido_use_case: CrearPedidoUseCase):
+def registrar_rutas(blueprint: Blueprint, crear_pedido_use_case: CrearPedidoUseCase):
     """Registra las rutas relacionadas con pedidos"""
     controller = PedidoController(crear_pedido_use_case)
     
