@@ -1,4 +1,3 @@
-# infrastructure/persistence/sqlalchemy_pedido_repository.py
 from sqlalchemy.orm import Session
 from domain.entities.Pedido import Pedido
 from domain.repositories.RepositorioPedido import RepositorioPedido
@@ -7,7 +6,7 @@ from domain.exceptions import PedidoNoEncontradoError
 from infrastructure.adapters.persistence.models.PedidoModel import PedidoModel
 from typing import Callable, List
 
-class SQLAlchemyPedidoRepository(RepositorioPedido):
+class PedidoRepositorySQLalchemy(RepositorioPedido):
     def __init__(self, session_factory: Callable[[], Session]):
         self.session_factory = session_factory
 
@@ -55,22 +54,42 @@ class SQLAlchemyPedidoRepository(RepositorioPedido):
                 
             return self._to_entity(pedido_model)
 
-    def listar_por_estado(self, estado: EstadoPedido) -> List[Pedido]:
-        with self.session_factory() as session:
-            modelos = session.query(PedidoModel)\
-                .filter_by(estado=estado.value)\
-                .all()
-            return [self._to_entity(m) for m in modelos]
-
-    def actualizar_estado(self, pedido_id: str, 
-                        nuevo_estado: EstadoPedido) -> None:
+    def borrar(self, pedido_id: str) -> None:
+        """Elimina un pedido por su ID"""
         with self.session_factory() as session:
             pedido_model = session.query(PedidoModel)\
                 .filter_by(id=pedido_id)\
                 .first()
-                
+            
             if not pedido_model:
                 raise PedidoNoEncontradoError(pedido_id=pedido_id)
-                
-            pedido_model.estado = nuevo_estado.value
+            
+            session.delete(pedido_model)
             session.commit()
+
+    def listar(self) -> List[Pedido]:
+        """Lista todos los pedidos"""
+        with self.session_factory() as session:
+            modelos = session.query(PedidoModel).all()
+            return [self._to_entity(modelo) for modelo in modelos]
+
+    def modificar(self, pedido: Pedido) -> Pedido:
+        """Modifica un pedido existente"""
+        with self.session_factory() as session:
+            pedido_model = session.query(PedidoModel)\
+                .filter_by(id=pedido.id)\
+                .first()
+            
+            if not pedido_model:
+                raise PedidoNoEncontradoError(pedido_id=pedido.id)
+            
+            # Actualizar los campos del modelo
+            pedido_model.id_cliente = pedido.id_cliente
+            pedido_model.direccion_entrega = pedido.direccion_entrega
+            pedido_model.id_items = pedido.id_items
+            pedido_model.estado = pedido.estado_pedido.value
+            pedido_model.fecha_ultima_actualizacion = pedido.fecha_ultima_actualizacion
+            pedido_model.total = pedido.total_pedido
+            
+            session.commit()
+            return self._to_entity(pedido_model)

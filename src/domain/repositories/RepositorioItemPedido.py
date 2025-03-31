@@ -11,13 +11,6 @@ class RepositorioItemPedido(ABC):
         pass
 
     @abstractmethod
-    def modificar(self, pedido_id: str) -> ItemPedido:
-        """
-        Modifica un item de pedido en la base de datos
-        """
-        pass
-
-    @abstractmethod
     def buscar_por_id(self, pedido_id: str) -> Optional[ItemPedido]:
         """
         Busca un item de pedido por su id en la base de datos

@@ -1,9 +1,9 @@
 from datetime import datetime
 import uuid
 from typing import List
-from value_objects.Direccion import Direccion
-from value_objects.TotalPedido import TotalPedido
-from value_objects.EstadoPedido import EstadoPedido
+from domain.value_objects.Direccion import Direccion
+from domain.value_objects.TotalPedido import TotalPedido
+from domain.value_objects.EstadoPedido import EstadoPedido
 
 
 class Pedido:
