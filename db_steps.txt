@@ -1,0 +1,9 @@
+psql -U postgres
+psql -U postgres -h localhost -p 5432
+CREATE USER boss WITH PASSWORD 'bosspass';
+CREATE DATABASE pedidos_db;
+GRANT ALL PRIVILEGES ON DATABASE pedidos_db TO boss;
+ALTER DATABASE pedidos_db OWNER TO boss;
+
+configura el URI como
+DATABASE_URI=postgresql://boss:bosspass@localhost:5432/pedidos_db

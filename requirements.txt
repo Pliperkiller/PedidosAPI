@@ -2,19 +2,9 @@ flask
 pydantic
 dependency-injector
 
-# Base de datos (según la opción seleccionada)
-
-
-
+psycopg2-binary
 sqlalchemy
 alembic
-
-# Mensajería (según la opción seleccionada)
-
-
-
-# Testing (según la opción seleccionada)
-
 
 # Utilidades
 flask-cors
